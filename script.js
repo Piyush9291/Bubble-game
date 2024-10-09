@@ -1,34 +1,54 @@
-var timer = 5;
+var timer = 60;
+var score = 0;
+var rndnum = 0;
 
-function getnewhit(){
-      var rn = Math.floor(Math.random( )*10)
-      document.querySelector("#hitval").textContent = rn;
+
+
+increasescore = () =>{
+    score += 10;
+    document.querySelector("#scoreval").textContent = score;
 }
 
 
-function makeBubble() {
-    var clutter = ""
 
-    for (var i = 1; i <= 178; i++) {
-        let rdom = Math.floor(Math.random() * 10)
-        clutter += `<div class="bubble">${rdom}</div>`
-    }
+ hitscore = () =>{
+   rndnum = Math.floor(Math.random( ) * 10);
+   document.querySelector("#hitval").textContent = rndnum;
+ }
 
-    document.querySelector("#pbtm").innerHTML = clutter;
+function makeBubble(){
+var clutter = " ";
+
+ for(let i=1; i<=170; i++){
+   const rdom = Math.floor(Math.random( )*10)
+   clutter += `<div class="bubble">${rdom}</div>`
+ }
+
+ document.querySelector("#pbtm").innerHTML = clutter;
 }
 
-   function runtimer(){
-      let settime = setInterval(function(){
-         if(timer > 0){
-            timer--;
-            document.querySelector("#timerval").textContent = timer;
-         }
-         else{
-            clearInterval(settime);
-         }
-       },1000)
-   }
+
+ runtimer = () => {
+  let set = setInterval(() => {
+      if(timer > 0){
+         timer -- ;
+         document.querySelector("#timerval").textContent = timer
+      }
+      else{
+         clearInterval(set);
+      }
+   },1000)
+ }
+
+ document.querySelector("#pbtm").addEventListener("click" , (ele) =>{
+   let clicknum = Number(ele.target.textContent);
+     if(clicknum === rndnum){
+       increasescore();
+       makeBubble();
+      hitscore();
+     }
+})
+
+makeBubble();
 runtimer();
-makeBubble()
-getnewhit()
-
+hitscore();
