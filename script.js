@@ -36,6 +36,7 @@ var clutter = " ";
       }
       else{
          clearInterval(set);
+         document.querySelector("#pbtm").innerHTML = `<h1>Game Over</h1>`
       }
    },1000)
  }
