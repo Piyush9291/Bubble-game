@@ -1,4 +1,4 @@
-var timer = 60;
+var timer = 3;
 var score = 0;
 var rndnum = 0;
 
